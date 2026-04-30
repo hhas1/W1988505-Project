@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    min-height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+}
+
+.header h2 {
+    color: #2c3e50;
+    font-size: 30px;
+}
+
+.main {
+    max-width: 420px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.left-panel {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 100%;
+    margin-bottom: 70px;
+}
+
+.left-panel h3 {
+    color: #2c3e50;
+    margin-bottom: 50px;
+}
+
+.left-panel .form-group:first-of-type {
+    margin-top: 25px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+select,
+input[type="number"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #dcdde1;
+    border-radius: 4px;
+    font-size: 13px;
+    background-color: #fafafa;
+}
+
+select:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #ffffff;
+}
+
+button[type="submit"] {
+    display: inline-block;
+    width: auto;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.results-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    margin: 40px auto 0 auto;
+}
+
+.results-card h3 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+thead {
+    background-color: #3498db;
+    color: white;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+td {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8f9fa;
+}
+
+tr:hover td {
+    background-color: #eaf4fb;
+}
+
+.reset-link {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.reset-btn {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+    background-color: #2980b9;
+}
