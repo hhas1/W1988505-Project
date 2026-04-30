@@ -34,7 +34,8 @@ def index():
         selected_price = request.form.get("price")
         max_price = float(selected_price)
 
-        category_code = list(category_mapping.keys())[list(category_mapping.values()).index(selected_category)]
+        category_code = list(category_mapping.keys())[list(
+            category_mapping.values()).index(selected_category)]
         price_scaled = scaler.transform([[float(max_price)]])[0][0]
 
         user_vector = [[category_code, price_scaled]]
@@ -43,14 +44,17 @@ def index():
             (df["product_category"] == selected_category) &
             (df["original_price"] <= max_price)
         ]
-        
+
         if len(filtered_df) > 0:
-            filtered_features = filtered_df[["category_code", "discounted_price"]]
-            similarity_scores = cosine_similarity(user_vector, filtered_features)[0]
+            filtered_features = filtered_df[[
+                "category_code", "discounted_price"]]
+            similarity_scores = cosine_similarity(
+                user_vector, filtered_features)[0]
             filtered_df = filtered_df.copy()
             filtered_df["similarity"] = similarity_scores
-        
-            recommendations = filtered_df.sort_values(by="similarity", ascending=False).head(5)
+
+            recommendations = filtered_df.sort_values(
+                by="similarity", ascending=False).drop_duplicates(subset=["product_title"]).head(5)
 
     return render_template(
         "index.html",
