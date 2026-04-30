@@ -2,44 +2,68 @@
 <html>
 <head>
     <title>Student Saver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    <h2>Student Saver</h2>
+    <div class="header">
+        <h2>Student Saver</h2>
+    </div>
 
-    <form method="post">
-        <label>Category:</label>
-        <select name="category">
-            {% for category in categories %}
-            <option value="{{ category }}" {% if category == selected_category %} selected {% endif %}>{{ category }}</option>
-            {% endfor %}
-        </select>
-        <br></br>
-        <label>Budget:</label>
-        <input type="number" name="price" step="5" value= "{{ selected_price if selected_price else ''}}" required>
-        <br></br>
-        <button type="submit">Get Recommendations</button>
-    </form>
-    
-    {% if recommendations is not none %}
-    <h3>Recommended Products:</h3>
-    <table border="1">
-        <tr>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Price</th>
-        </tr>
-        {% for index, row in recommendations.iterrows() %}
-        <tr>
-            <td>{{ row["product_title"]}}</td>
-            <td>{{ row["product_category"]}}</td>
-            <td>{{ row["original_price"]}}</td>
-        </tr>
-        {% endfor%}
-    </table>
+    <div class="main">
+        
+        {% if recommendations is none %}
+        <div class="left-panel">
+            <h3>Find Products</h3>
+            
+            <form method="post">
+                <div class="form-group">
+                    <label>Category:</label>
+                    <select name="category">
+                        {% for category in categories %}
+                        <option value="{{ category }}" {% if category == selected_category %} selected {% endif %}>{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Budget:</label>
+                    <input type="number" name="price" step="5" value="{{ selected_price if selected_price else ''}}" required>
+                </div>
+                
+                <button type="submit">Get Recommendations</button>
+            </form>
+        </div>
 
-    <br>
-    <a href="/"><button type="button">Reset</button></a>
-    {% endif %}
+        {% else %}
+        <div class="results-card" style="margin-top: 0;">
+            <h3>Recommended Products:</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, row in recommendations.iterrows() %}
+                    <tr>
+                        <td>{{ row["product_title"]}}</td>
+                        <td>{{ row["product_category"]}}</td>
+                        <td>{{ row["original_price"]}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+
+            <div class="reset-link">
+                <a href="/"><button type="button" class="reset-btn">Reset</button></a>
+            </div>
+        </div>
+        {% endif %}
+        
+    </div>
 </body>
 </html>
